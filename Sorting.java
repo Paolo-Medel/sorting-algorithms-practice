@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Sorting {
 
     public static int[] selectiveSortMethod(int[] array) {
@@ -38,6 +40,51 @@ public class Sorting {
             }
             if (!swapped) break;
 
+        }
+        return array;
+    }
+
+    public static int[] mergeSort(int[] array) {
+
+        if (array.length > 1) {
+            int mid = array.length / 2;
+
+            int[] leftArray = Arrays.copyOfRange(array, 0, mid);
+            int[] rightArray = Arrays.copyOfRange(array, mid, array.length);
+
+            int[] left = mergeSort(leftArray);
+            int[] right = mergeSort(rightArray);
+
+            int[] merged = new int[array.length];
+
+            int i = 0;
+            int j = 0;
+            int k = 0;
+
+            while(i < left.length && j < right.length){
+                if (left[i] > right[j]) {
+                    merged[k] = right[j];
+                    j++;
+                } else {
+                    merged[k] = left[i];
+                    i++;
+                }
+                k++;
+            }
+
+            while(i < left.length){
+                merged[k] = left[i];
+                i++;
+                k++;
+            }
+
+            while(j < right.length){
+                merged[k] = right[j];
+                j++;
+                k++;
+            }
+
+            return merged;
         }
         return array;
     }
