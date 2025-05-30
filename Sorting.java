@@ -45,7 +45,6 @@ public class Sorting {
     }
 
     public static int[] mergeSort(int[] array) {
-
         if (array.length > 1) {
             int mid = array.length / 2;
 
@@ -61,7 +60,7 @@ public class Sorting {
             int j = 0;
             int k = 0;
 
-            while(i < left.length && j < right.length){
+            while (i < left.length && j < right.length) {
                 if (left[i] > right[j]) {
                     merged[k] = right[j];
                     j++;
@@ -72,13 +71,13 @@ public class Sorting {
                 k++;
             }
 
-            while(i < left.length){
+            while (i < left.length) {
                 merged[k] = left[i];
                 i++;
                 k++;
             }
 
-            while(j < right.length){
+            while (j < right.length) {
                 merged[k] = right[j];
                 j++;
                 k++;
