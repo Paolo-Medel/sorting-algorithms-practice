@@ -135,4 +135,43 @@ public class Sorting {
 
         return result;
     }
+
+    public static int[] RadixSort(int[] array) {
+//        RADIX_SORT(array)
+//        maxNumber ← find the maximum number in array
+//        digitPlace ← 1
+
+//        while maxNumber / digitPlace > 0
+//        COUNTING_SORT_BY_DIGIT(array, digitPlace)
+//        digitPlace ← digitPlace * 10
+
+        return array;
+    }
+
+    public static int[] CountingSort(int[] array, int digitPlace) {
+//        COUNTING_SORT_BY_DIGIT(array, digitPlace)
+//        n ← length of array
+//        output ← array of size n
+//        count ← array of size 10 initialized to 0  // for digits 0 to 9
+//
+//        // Count occurrences of digits
+//        for i from 0 to n - 1
+//        digit ← (array[i] / digitPlace) % 10
+//        count[digit] ← count[digit] + 1
+//
+//        // Accumulate counts
+//        for i from 1 to 9
+//        count[i] ← count[i] + count[i - 1]
+//
+//        // Build the output array (traverse from end for stability)
+//        for i from n - 1 downto 0
+//        digit ← (array[i] / digitPlace) % 10
+//        output[count[digit] - 1] ← array[i]
+//        count[digit] ← count[digit] - 1
+//
+//        // Copy output to original array
+//        for i from 0 to n - 1
+//        array[i] ← output[i]
+        return array;
+    }
 }
