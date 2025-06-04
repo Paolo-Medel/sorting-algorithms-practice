@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 public class Sorting {
 
@@ -86,5 +88,51 @@ public class Sorting {
             return merged;
         }
         return array;
+    }
+
+    public static int[] QuickSort(int[] array) {
+        if (array.length < 2) {
+            return array;
+        }
+
+        //pick a random pivot
+        Random randomObj = new Random();
+        int randomIndex = randomObj.nextInt(array.length);
+        int randomValueFromArray = array[randomIndex];
+
+        //move the pivot to the end
+        int temp = array[array.length - 1];
+        array[array.length - 1] = randomValueFromArray;
+        array[randomIndex] = temp;
+
+        // Count elements less and greater - making sure not to include the pivot to itself
+        int lessCount = 0, greaterCount = 0;
+        for (int i = 0; i < array.length - 1; i++) {
+            if (array[i] < randomValueFromArray) lessCount++;
+            else greaterCount++;
+        }
+
+        // initialize the array's with the correct size
+        int[] less = new int[lessCount];
+        int[] greater = new int[greaterCount];
+
+        // use pointers to input values into the above arrays
+        int l = 0, g = 0;
+        for (int i = 0; i < array.length - 1; i++) {
+            if (array[i] < randomValueFromArray) less[l++] = array[i];
+            else greater[g++] = array[i];
+        }
+
+        // recursive step
+        int[] sortedLess = QuickSort(less);
+        int[] sortedGreater = QuickSort(greater);
+
+        // concatenate less, pivot, more values
+        int[] result = new int[array.length];
+        System.arraycopy(sortedLess, 0, result, 0, sortedLess.length);
+        result[sortedLess.length] = randomValueFromArray;
+        System.arraycopy(sortedGreater, 0, result, sortedLess.length + 1, sortedGreater.length);
+
+        return result;
     }
 }
